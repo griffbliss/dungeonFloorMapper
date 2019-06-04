@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Draw Dungeon</title>
+<link rel="stylesheet" type="text/css" href="tool.css">
+<script src="drawDungeon.js" type="text/javascript"></script>
+</head>
+<body onload="bodyLoad();" onresize="RedrawCanvas( );">
+<div id="divMenu">
+<a href="../index.html">Mordor</a> | 
+<a href="index.html">Tools Index</a>
+</div>
+<div id="divCanvas" style="margin: 0pt; border: 0pt; padding: 0pt;">
+<canvas id="cnv" height="300" width="400" style="margin: 0pt; border: 0pt; padding: 0pt; display: none;"></canvas>
+<img id="img" height="300" width="400" style="margin: 0pt; border: 0pt; padding: 0pt;" onmousedown="mouseDown(event)" onmouseup="mouseUp(event)" onmousemove="mouseMove(event)" ondragstart="return false;"/>
+</div>
+<div id="divTools" style="padding: 1pt; margin: 1pt; border: 1pt solid black;">
+<form id="frm">
+<input type="textbox" id="txtStatus" size="60"/>
+Draw Type: <select id="selType">
+<option value="Fill">Fill</option>
+<option value="Freehand line">Freehand line</option>
+<option value="Straight line">Straight line</option>
+</select> |
+Tool: <select id="selTool">
+<optgroup label="Solid fill">
+<option value="Fill">Fill wall</option>
+<option value="Empty">Clear</option>
+<option value="Water">Water</option>
+</optgroup>
+<optgroup label="Walls">
+<option value="Wall">Wall</option>
+<option value="NoWall">Clear wall</option>
+<option value="Door">Door</option>
+<option value="Secret">Secret door</option>
+<option value="Window">Window</option>
+</optgroup>
+<optgroup label="Special">
+<option value="Stamp">Stamp</option>
+<option value="NoStamp">Clear stamp</option>
+<option value="Letter">Letter</option>
+<option value="NoLetter">Clear letter</option>
+<option value="Note">Note</option>
+<option value="NoNote">Clear note</option>
+</optgroup>
+</select>
+<span id ="spnStamp" style="display: none;"> |
+Stamp: <select id="selStamp">
+<option value="Altar">Altar</option>
+<option value="Bed">Bed</option>
+<option value="Bench">Bench</option>
+<option value="Chair">Chair</option>
+<option value="Chest">Chest</option>
+<option value="Coffin">Coffin</option>
+<option value="Column">Column</option>
+<option value="Fireplace, large">Fireplace, large</option>
+<option value="Fireplace, medium">Fireplace, medium</option>
+<option value="Fireplace, small">Fireplace, small</option>
+<option value="Pentacle">Pentacle</option>
+<option value="Septacle">Septacle</option>
+<option value="Table, rectangle">Table, rectangle</option>
+<option value="Stairs">Stairs</option>
+<option value="Table, round">Table, round</option>
+<option value="Throne">Throne</option>
+</select></span>
+<span id="spnNote" style="display: none;"> | Note: <input id="txtNote" type="text" size="30"/></span>
+<span id="spnLetter" style="display: none;"> | Letter: <input id="txtLetter" type="text" size="2"/></span>
+ |
+Grid W <input type="textbox" id="txtWidth" size="2" value="30" onchange="txtWidthChange( )"/> x 
+H <input type="textbox" id="txtHeight" size="2" value="20" onchange="txtHeightChange( )"/>
+<button type="button" id="btnResize" onclick="btnResizeClick( )">Resize</button> | Display
+W <input type="textbox" id="txtDisplayWidth" size="2" value="300" onchange="txtDisplayWidthChange( )"/> x 
+H <input type="textbox" id="txtDisplayHeight" size="2" value="200" onchange="txtDisplayHeightChange( )"/>
+<input type="checkbox" id="chkFullScreen" checked="true" oninput="chkFullScreenInput( )" onchange="chkFullScreenInput( )"/> Full Screen
+<textarea id="txtOutput" style="width: 90%; height: 2in;"></textarea></form>
+</div>
+<img id="imgFill2" height="8" width="8" style="visibility: hidden"/>
+<img id="imgWater2" height="8" width="8" style="visibility: hidden"/>
+<canvas id="cnvFill2" height="8" width="8" style="visibility: hidden"/>
+<canvas id="cnvWater2" height="8" width="8" style="visibility: hidden"/>
+
+</body>
